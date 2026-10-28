@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Organize a urgência. Encontre o próximo passo. Triagem inteligente de chamados com IA.">
+  <title>SmartDesk AI · Triagem inteligente</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%235b4ae8'/%3E%3Cpath d='m22 7-12 15h9l-1 11 12-16h-9z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css"><script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="brand-icon" aria-hidden="true">ϟ</span><span>SmartDesk <b>AI</b></span></div><span class="header-label">Seu suporte, um passo à frente.</span><span class="powered"><span class="spark">✦</span> Powered by Gemini</span></header>
+  <main>
+    <div class="intro"><span class="eyebrow"><span class="dot"></span> MENOS FILA. MAIS SOLUÇÃO.</span><h1>Todo chamado merece<br>o <span>próximo passo certo.</span></h1><p>Triagem inteligente de chamados com IA.<br>Descreva o problema. Nós ajudamos a organizar o que vem depois.</p></div>
+    <div class="workspace">
+      <section class="card input-card" aria-labelledby="input-title">
+        <div class="card-heading"><span class="step">01</span><div><h2 id="input-title">Conte o que aconteceu</h2><p>Os detalhes fazem a diferença na triagem.</p></div><span class="small-icon" aria-hidden="true">↗</span></div>
+        <form id="form">
+          <div class="label-row"><label for="descricao">Descrição do chamado</label><span id="count">0 / 10.000</span></div>
+          <textarea id="descricao" name="descricao" rows="8" maxlength="10000" required placeholder="Descreva o problema com o máximo de detalhes possível..." aria-describedby="input-hint"></textarea>
+          <p id="input-hint" class="hint">Exemplo: Meu computador não liga e preciso apresentar um trabalho daqui a 30 minutos.</p>
+          <div class="examples-title">PRECISA DE UMA IDEIA? EXPERIMENTE</div>
+          <div class="examples">
+            <button type="button" class="example" data-example="Meu computador não liga e tenho uma apresentação em 30 minutos."><span aria-hidden="true">▣</span><span>Computador não liga<small>Apresentação em 30 minutos</small></span><span class="example-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" class="example" data-example="O sistema financeiro está fora do ar para todos os funcionários."><span aria-hidden="true">◎</span><span>Sistema fora do ar<small>Todos os funcionários afetados</small></span><span class="example-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" class="example" data-example="Preciso alterar meus dados cadastrais no RH."><span aria-hidden="true">♧</span><span>Atualização no RH<small>Alterar dados cadastrais</small></span><span class="example-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" class="example" data-example="Minha nota fiscal ainda não foi processada."><span aria-hidden="true">≡</span><span>Nota fiscal pendente<small>Aguardando processamento</small></span><span class="example-arrow" aria-hidden="true">↗</span></button>
+          </div>
+          <div id="error" class="error" role="alert" hidden></div>
+          <button id="analisar" class="primary" type="submit" disabled><span id="button-icon" aria-hidden="true">✦</span><span id="button-label">Analisar chamado</span><span class="button-arrow" aria-hidden="true">→</span></button>
+          <p class="privacy">◈ Sua descrição é enviada à IA apenas ao analisar.</p>
+        </form>
+      </section>
+      <section class="card result-card" aria-labelledby="result-title" aria-busy="false">
+        <div class="card-heading"><span class="step">02</span><div><h2 id="result-title">Clareza para agir</h2><p>A análise do seu chamado aparece aqui.</p></div></div>
+        <div id="empty" class="empty-state"><div class="orb" aria-hidden="true"><span>✦</span><i class="orbit-dot"></i></div><span class="empty-tag">DO PROBLEMA À DIREÇÃO</span><h3>Um chamado.<br>Quatro respostas.</h3><p>Entenda a categoria, a urgência e<br>o melhor caminho para resolver.</p><div class="preview-tags"><span>Categoria</span><span>Prioridade</span><span>Resumo</span><span>Próximo passo</span></div><div class="empty-line"></div><p class="empty-foot">Preencha ao lado e deixe a IA ajudar.</p></div>
+        <div id="loading" class="loading-state" role="status" hidden><div class="loader" aria-hidden="true"></div><h3>Analisando chamado com IA...</h3><p>Identificando contexto, impacto e urgência.</p></div>
+        <div id="result" hidden>
+          <div class="result-status"><span class="dot"></span> ANÁLISE CONCLUÍDA</div>
+          <div class="classification"><div><span class="field-label">CATEGORIA</span><p id="categoria"></p></div><div><span class="field-label">PRIORIDADE</span><p><span id="prioridade" class="priority"></span></p></div></div>
+          <div class="result-section"><span class="field-label">RESUMO DO CHAMADO</span><p id="resumo"></p></div>
+          <div class="action-box"><span class="field-label">↗ AÇÃO RECOMENDADA</span><p id="acao"></p></div>
+          <p class="result-note">Sugestão gerada por IA. Revise a triagem antes de encaminhar.</p>
+        </div>
+      </section>
+    </div>
+    <div class="benefits"><span><b>✦</b> Contexto compreendido</span><i></i><span><b>◷</b> Prioridade identificada</span><i></i><span><b>↗</b> Próximo passo definido</span></div>
+  </main>
+  <footer><span>SmartDesk AI <span class="footer-dot">/</span> Inteligência para o seu atendimento.</span><span>Feito para simplificar.</span></footer>
+</body>
+</html>
